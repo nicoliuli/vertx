@@ -16,5 +16,13 @@ public class Main {
                 System.out.println(res.cause());
             }
         });
+
+        vertx.deployVerticle(EventBusVerticle.class.getName(),options,res -> {
+            if (res.succeeded()) {
+                System.out.println(res.result());
+            } else {
+                System.out.println(res.cause());
+            }
+        });
     }
 }

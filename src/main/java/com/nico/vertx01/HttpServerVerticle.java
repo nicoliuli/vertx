@@ -14,30 +14,7 @@ public class HttpServerVerticle extends AbstractVerticle {
 
         });
 
-        EventBus eventBus = vertx.eventBus();
-
         vertx.createHttpServer().requestHandler(req -> {
-
-            eventBus.consumer("demo", message -> {
-                System.out.println("consumer0 ==== " + message.body());
-                message.reply("ok0");
-            });
-
-            eventBus.consumer("demo", message -> {
-                System.out.println("consumer1 ==== " + message.body());
-                message.reply("ok1");
-            });
-
-            eventBus.send("demo", "hahaha", reply -> {
-                if (reply.succeeded()) {
-                    System.out.println("consumer reply === " + reply.result().body());
-                } else {
-                    // 没有消费者handler,会失败
-                    System.out.println("consumer fail");
-                }
-            });
-
-
             req.response()
                     .putHeader("text/plain", "text/plain")
                     .end("Hello World");
