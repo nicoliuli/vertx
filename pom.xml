@@ -25,6 +25,12 @@
       <artifactId>vertx-core</artifactId>
       <version>${vertx.version}</version>
     </dependency>
+    <!--对集群的支持-->
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-hazelcast</artifactId>
+      <version>${vertx.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>org.projectlombok</groupId>

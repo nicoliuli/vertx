@@ -2,7 +2,6 @@ package com.nico.vertx01;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Context;
-import io.vertx.core.eventbus.EventBus;
 
 public class HttpServerVerticle extends AbstractVerticle {
 
