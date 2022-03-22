@@ -13,8 +13,11 @@ public class HttpServerVerticle extends AbstractVerticle {
 
         });
 
+        // curl -X POST http://localhost:8080 -d 'hello=world'
         vertx.createHttpServer().requestHandler(req -> {
-            req.response()
+            req.handler(buffer -> {
+                        System.out.println(buffer.length());
+            }).response()
                     .putHeader("text/plain", "text/plain")
                     .end("Hello World");
         }).listen(8080);

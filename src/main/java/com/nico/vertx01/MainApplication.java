@@ -7,7 +7,7 @@ import io.vertx.core.eventbus.EventBus;
 
 public class MainApplication {
     public static void main(String[] args) {
-        DeploymentOptions options = new DeploymentOptions().setInstances(2);
+        DeploymentOptions options = new DeploymentOptions().setInstances(1);
         Vertx vertx = Vertx.vertx();
 
 
