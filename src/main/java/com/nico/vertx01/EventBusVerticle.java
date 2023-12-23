@@ -17,14 +17,14 @@ public class EventBusVerticle extends AbstractVerticle {
         EventBus eventBus = vertx.eventBus();
 
         vertx.setPeriodic(1000,handler->{
-            eventBus.send("demo", "hahaha", reply -> {
+           /* eventBus.send("demo", "hahaha", reply -> {
                 if (reply.succeeded()) {
                     System.out.println("consumer reply === " + reply.result().body());
                 } else {
                     // 没有消费者handler,会失败
                     System.out.println("consumer fail");
                 }
-            });
+            });*/
         });
         eventBus.consumer("demo", message -> {
             System.out.println("consumer0 ==== " + message.body());
