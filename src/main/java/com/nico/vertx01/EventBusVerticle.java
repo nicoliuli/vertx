@@ -16,18 +16,7 @@ public class EventBusVerticle extends AbstractVerticle {
 
         EventBus eventBus = vertx.eventBus();
 
-        vertx.createHttpServer().requestHandler(req -> {
-
-            eventBus.consumer("demo", message -> {
-                System.out.println("consumer0 ==== " + message.body());
-                message.reply("ok0");
-            });
-
-            eventBus.consumer("demo", message -> {
-                System.out.println("consumer1 ==== " + message.body());
-                message.reply("ok1");
-            });
-
+        vertx.setPeriodic(1000,handler->{
             eventBus.send("demo", "hahaha", reply -> {
                 if (reply.succeeded()) {
                     System.out.println("consumer reply === " + reply.result().body());
@@ -36,12 +25,18 @@ public class EventBusVerticle extends AbstractVerticle {
                     System.out.println("consumer fail");
                 }
             });
+        });
+        eventBus.consumer("demo", message -> {
+            System.out.println("consumer0 ==== " + message.body());
+            message.reply("ok0");
+        });
+
+        eventBus.consumer("demo", message -> {
+            System.out.println("consumer1 ==== " + message.body());
+            message.reply("ok1");
+        });
 
 
-            req.response()
-                    .putHeader("text/plain", "text/plain")
-                    .end("Hello World");
-        }).listen(8081);
     }
 
     @Override
