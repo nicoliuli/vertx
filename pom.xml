@@ -41,7 +41,11 @@
       <artifactId>vertx-web-client</artifactId>
       <version>${vertx.version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-mysql-client</artifactId>
+      <version>4.4.0</version>
+    </dependency>
     <!--<dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
